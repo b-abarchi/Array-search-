@@ -1,0 +1,79 @@
+//------------------------------
+//Bello Abarchi
+//Sorting array
+//------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+
+#define PAUSE system("pause");
+#define SIZE 1000
+//prototype function
+void displayArray(int array2[], int count);
+void sortTheArray(int array2[], int count);
+void reverseSorting(int array2[], int count);
+char switchValues(int array2[], int i);
+int loadTheArray(int array2[]);
+main() {
+
+	int array2[SIZE] = { 0 };
+	int count = 50;
+	loadTheArray(array2);
+	printf("UNSORTED ARRAY\n");
+	displayArray(array2, count);
+	sortTheArray(array2, count);
+	printf("SORTED ARRAY\n");
+	displayArray(array2, count);
+	reverseSorting(array2, count);
+	printf("REVERSED SORTED ARRAY\n");
+	displayArray(array2, count);
+}//end of main
+void displayArray(int array2[], int count) {
+	int i = 0;
+	for (i = 0; i < count; i++)
+		printf(" %i. value %i\n", i + 1, array2[i]);
+	PAUSE;
+}//end display array
+int loadTheArray(int array2[]) {
+	int const LB = 1;
+	int const UB = 50;
+	int i = 0;
+	srand((unsigned)time(NULL));
+	for (i = 0; i < SIZE; i++) 
+		array2[i] = LB + rand() % (UB - LB + 1);
+	return i;
+}//end of loadTheArray
+char switchValues(int array2[], int i) {
+	int temp;
+	temp = array2[i];
+	array2[i] = array2[i + 1];
+	array2[i + 1] = temp;
+	return 'Y';
+}//end switchValues
+void sortTheArray(int array2[], int count) {
+	char switchMade = 'N';
+	int bottom = count - 1;
+	int i;
+	do {
+		switchMade = 'N';
+		for (i = 0; i < bottom; i++)
+			if (array2[i] < array2[i + 1])
+				switchMade = switchValues(array2, i);
+		bottom--;
+	} while (switchMade == 'Y');
+
+}//end of sortTheArray
+
+void reverseSorting(int array2[], int count) {
+
+	char switchMade = 'N';
+	int bottom = count - 1; 
+	int i;
+	do {
+		switchMade = 'N';
+		for (i = 0; i < bottom; i++)
+			if (array2[i] > array2[i + 1])
+				switchMade = switchValues(array2, i);
+		bottom--;
+	} while (switchMade == 'Y');
+
+}//end of reverse sorting
