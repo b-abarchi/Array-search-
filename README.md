@@ -1,2 +1,1 @@
-# C Codes
-for intro to C Programming. 
+# Sorting and searching Algorithms
