@@ -1,1 +1,1 @@
-# Sorting and searching Algorithms
+# Sorting and searching Algorithms in C
